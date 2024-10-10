@@ -1,0 +1,20 @@
+server:
+  port: 7071
+spring:
+  application:
+    name: msv-wikimedia-consumer
+
+  kafka:
+    consumer:
+      bootstrap-servers: ${HOST:localhost}:${PORT:9092}
+      group-id: myGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      # properties:
+        # spring.json.trusted.packages: '*'
+
+  output:
+    ansi:
+      enabled: ALWAYS
