@@ -1,0 +1,45 @@
+#################################################################
+####################### Table no reactive #######################
+#################################################################
+CREATE TABLE IF NOT EXISTS public.wikimedia_changes
+(
+    id bigint NOT NULL,
+    vtitle character varying(255),
+    vuser character varying(255),
+    "timestamp" timestamp,
+    vtype character varying(50),
+    comment text,
+    CONSTRAINT wikimedia_changes_pkey PRIMARY KEY (id)
+)
+
+################## consult Table no reactive ##################
+select count(*), id from public.wikimedia_changes
+group by id having count(*) > 1
+
+select * from public.wikimedia_changes
+
+#################################################################
+######################## Table reactive #########################
+#################################################################
+
+CREATE TABLE IF NOT EXISTS public.wikimedia_changes_flux
+(
+    id UUID NOT NULL,
+	veventid bigint NOT NULL,
+    vtitle character varying(255),
+    vuser character varying(255),
+    vtimestamp varchar(50),
+    vtype character varying(50),
+    comment text,
+    CONSTRAINT wikimedia_changes_flux_pkey PRIMARY KEY (id)
+)
+
+################## consult Table reactive ##################
+select count(*), id from public.wikimedia_changes_flux
+group by id having count(*) > 1
+
+select * from public.wikimedia_changes_flux
+
+select * from public.wikimedia_changes_flux where (vuser = '' || vuser is null)
+
+select * from public.wikimedia_changes_flux where length(vtitle) > 90

@@ -3,6 +3,27 @@ server:
 spring:
   application:
     name: msv-wikimedia-consumer
+    version: "@project.version@"
+
+  # Postgresql Jdbc
+#  datasource:
+#    url: jdbc:postgresql://localhost:5433/wikimedia
+#    username: develop
+#    password: develop123
+#    driver-class-name: org.postgresql.Driver
+#    initialization-mode: always
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+
+  # Postgresql Reactive
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5433/wikimedia
+    username: develop
+    password: develop123
+  datasource:
+    driver-class-name: org.postgresql.Driver
 
   kafka:
     consumer:
@@ -18,3 +39,8 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
+
+logging:
+  level:
+    # io.r2dbc: DEBUG
+    org.springframework.r2dbc.core: DEBUG

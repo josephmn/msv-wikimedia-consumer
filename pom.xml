@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>api.azure</groupId>
 	<artifactId>msv-wikimedia-consumer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>msv-wikimedia-consumer</name>
 	<description>Project consumer Wikimedia for Spring Boot &amp; kafka</description>
 	<url>https://github.com/josephmn/msv-wikimedia-consumer.git</url>
@@ -29,14 +29,44 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- spring web no reactive - start -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+<!--		</dependency>-->
+		<!-- spring web no reactive - end -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
+
+		<!-- postgresql and jdbc - start -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-jdbc</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.postgresql</groupId>-->
+<!--			<artifactId>postgresql</artifactId>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
+		<!-- postgresql and jdbc - end -->
+
+		<!-- postgresql and r2dbc - start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>r2dbc-postgresql</artifactId>
+			<version>1.0.6.RELEASE</version>
+		</dependency>
+		<!-- postgresql and r2dbc - end -->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
